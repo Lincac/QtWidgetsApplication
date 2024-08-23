@@ -2,7 +2,6 @@
 
 unsigned int texture = -1;
 unsigned int vbo = -1;
-unsigned int vbo = -1;
 
 QtWidgetsApplication::QtWidgetsApplication(QWidget *parent)
     : QMainWindow(parent)
