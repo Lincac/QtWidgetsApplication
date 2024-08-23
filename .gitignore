@@ -1,0 +1,9 @@
+#gitignore
+
+.vs/
+x64/
+QtWidgetsApplication/x64/
+
+*.vcxproj
+*.filters
+*.user
