@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{805DE68F-5CD7-4A7F-BA9D-6D3E557E972E}</ProjectGuid>
+    <ProjectGuid>{425BF488-3D59-43F1-9DE0-54CD04ABC588}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -60,22 +60,26 @@
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)3party\include;%(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
-    </ClCompile>
     <Link>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)3party\lib\glm\;$(SolutionDir)3party\lib\CL\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glm.lib;OpenCL.lib;opengl32.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\include;%(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)3party\include;%(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
-    </ClCompile>
     <Link>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)3party\lib\glm\;$(SolutionDir)3party\lib\CL\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glm.lib;OpenCL.lib;opengl32.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\include;%(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -102,10 +106,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtRcc Include="QtWidgetsApplication.qrc" />
-    <QtUic Include="QtWidgetsApplication.ui" />
-    <QtMoc Include="QtWidgetsApplication.h" />
-    <ClCompile Include="QtWidgetsApplication.cpp" />
+    <QtRcc Include="QtWidgetsApplication_MC3D.qrc" />
+    <QtUic Include="QtWidgetsApplication_MC3D.ui" />
+    <QtMoc Include="QtWidgetsApplication_MC3D.h" />
+    <ClCompile Include="QtWidgetsApplication_MC3D.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.35026.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtWidgetsApplication", "QtWidgetsApplication\QtWidgetsApplication.vcxproj", "{805DE68F-5CD7-4A7F-BA9D-6D3E557E972E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtWidgetsApplication_MC3D", "QtWidgetsApplication_MC3D\QtWidgetsApplication_MC3D.vcxproj", "{425BF488-3D59-43F1-9DE0-54CD04ABC588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{805DE68F-5CD7-4A7F-BA9D-6D3E557E972E}.Debug|x64.Build.0 = Debug|x64
 		{805DE68F-5CD7-4A7F-BA9D-6D3E557E972E}.Release|x64.ActiveCfg = Release|x64
 		{805DE68F-5CD7-4A7F-BA9D-6D3E557E972E}.Release|x64.Build.0 = Release|x64
+		{425BF488-3D59-43F1-9DE0-54CD04ABC588}.Debug|x64.ActiveCfg = Debug|x64
+		{425BF488-3D59-43F1-9DE0-54CD04ABC588}.Debug|x64.Build.0 = Debug|x64
+		{425BF488-3D59-43F1-9DE0-54CD04ABC588}.Release|x64.ActiveCfg = Release|x64
+		{425BF488-3D59-43F1-9DE0-54CD04ABC588}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

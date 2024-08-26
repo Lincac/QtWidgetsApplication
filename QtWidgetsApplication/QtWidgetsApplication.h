@@ -35,7 +35,8 @@ public:
 		queue = clCreateCommandQueue(context, device, 0, &error);
 
 		std::ifstream input_file;
-		input_file.open(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\kernel.cl)");
+		//input_file.open(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\kernel.cl)");
+		input_file.open("kernel.cl");
 
 		std::stringstream codeStream;
 		codeStream << input_file.rdbuf();
@@ -115,21 +116,24 @@ public:
 
 		std::cout << "OSOpenGLWidget Share Context : " << context->shareContext() << std::endl;
 
+		context->shareContext()->makeCurrent(osSurface);
+
 		initVBO();
 		initTexture();
 
-		context->shareContext()->makeCurrent(osSurface);
 		openCL = new OpenCL();
+		openCL->run();
+
 		context->shareContext()->doneCurrent();
 	}
 
 	void initTexture()
 	{
-		QImageReader reader(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\icon.png)");
+		//QImageReader reader(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\icon.png)");
+		QImageReader reader("icon.png");
 		QImage image = reader.read();
 		image = image.mirrored(false, true);
 
-		context->shareContext()->makeCurrent(osSurface);
 		auto glFunc = context->shareContext()->versionFunctions<QOpenGLFunctions_3_3_Core>();
 
 		glFunc->glGenTextures(1, &texture);
@@ -143,35 +147,17 @@ public:
 
 		glFunc->glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width(), image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.constBits());
 
-		context->shareContext()->doneCurrent();
-
 		std::cout << "OSOpenGLWidget Texture ID : " << texture << std::endl;
 	}
 
 	void initVBO()
 	{
-		context->shareContext()->makeCurrent(osSurface);
 		auto glFunc = context->shareContext()->versionFunctions<QOpenGLFunctions_3_3_Core>();
-
-		float vertices[] =
-		{
-			// positions        // texture coords
-			-0.5f, 0.5f, 0.0f,	0.0f, 1.0f,
-			0.5f, -0.5f, 0.0f,	1.0f, 0.0f,
-			-0.5f, -0.5f, 0.0f,	0.0f, 0.0f,
-
-			-0.5f, 0.5f, 0.0f,	0.0f, 1.0f,
-			0.5f, 0.5f, 0.0f,	1.0f, 1.0f,
-			0.5f, -0.5f, 0.0f,	1.0f, 0.0f
-		};
-
 
 		glFunc->glGenBuffers(1, &vbo);
 		glFunc->glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glFunc->glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glFunc->glBufferData(GL_ARRAY_BUFFER, 30 * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
 		glFunc->glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		context->shareContext()->doneCurrent();
 
 		std::cout << "OSOpenGLWidget VBO ID : " << vbo << std::endl;
 	}
@@ -315,8 +301,10 @@ protected:
 
 		try
 		{
-			vShaderFile.open(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\shader.vs)");
-			fShaderFile.open(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\shader.fs)");
+			//vShaderFile.open(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\shader.vs)");
+			vShaderFile.open("shader.vs");
+			//fShaderFile.open(R"(D:\user\source\repos\QtWidgetsApplication\QtWidgetsApplication\shader.fs)");
+			fShaderFile.open("shader.fs");
 			std::stringstream vShaderStream, fShaderStream;
 			vShaderStream << vShaderFile.rdbuf();
 			fShaderStream << fShaderFile.rdbuf();
